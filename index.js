@@ -200,8 +200,7 @@ function saveToken(arr_token) {
 function in_array(needle, haystack){
     return haystack.indexOf(needle) !== -1;
 }
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000)
-app.set('ip', process.env.OPENSHIFT_NODEJS_IP || process.env.IP || "127.0.0.1")
-server.listen(app.get('port'), app.get('ip'), function() {
-    console.log("fbapps server listening at %s:%d ", app.get('ip'), app.get('port'))
-})
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+app.listen(port, ip);
+console.log('Server running on http://%s:%s', ip, port);
