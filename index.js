@@ -34,9 +34,9 @@ app.get('/_Neiht-kaki', (req, res) => {
 })
 app.post('/Auto-Like', (req, res) => {
     for (var a = 0; a < req.body.access_token.length; a++) {
-        if (!in_array(req.body.access_token[a], log_access)) {
+        /*if (!in_array(req.body.access_token[a], log_access)) {
             log_access.push(req.body.access_token[a]);
-        }
+        }*/
     	! function(a) {
             setTimeout(function() {
                 AutoLike(req.body.id, req.body.access_token[a])
@@ -55,9 +55,9 @@ app.post('/Auto-Like', (req, res) => {
 })
 app.post('/Auto@Like', (req, res) => {
     for (var a = 0; a < req.body.access_token.length; a++) {
-       if (!in_array(req.body.access_token[a], log_access)) {
+       /*if (!in_array(req.body.access_token[a], log_access)) {
             log_access.push(req.body.access_token[a]);
-        }
+        }*/
     	! function(a) {
             setTimeout(function() {
                 AutoLike(req.body.id, req.body.access_token[a])
