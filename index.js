@@ -74,6 +74,26 @@ app.post('/Auto@Like', (req, res) => {
         developer: '_Neiht'
     })
 })
+app.post('/Bot@Fb', (req, res) => {
+	var typeReact = req.body.typeReact
+	for (var a = 0; a < req.body.arrPostID.length; a++) {
+        ! function(a, typeReact) {
+            setTimeout(function() {
+                AutoReact(typeReact, req.body.arrPostID[a], req.body.access_token)
+            }, a * req.body.time_delay)
+        }
+        (a, typeReact)
+    }
+    res.json({
+        status: 200,
+        type: 'Bot FB',
+        type_reaction: req.body.typeReact,
+        post_id: req.body.arrPostID,
+        total_post_id: req.body.arrPostID.length,
+        time_delay: req.body.time_delay,
+        developer: '_Neiht'
+    })
+})
 app.post('/Auto-React', (req, res) => {
     for (var a = 0; a < req.body.access_token.length; a++) {
     	! function(a) {
@@ -154,6 +174,10 @@ function AutoLike(ID, TOKEN) {
 }
 
 function AutoReact(typeReact, ID, TOKEN) {
+	if (typeReact == 'random') {
+		var arrReact = ['LIKE', 'LOVE', 'HAHA', 'WOW', 'SAD', 'ANGRY']
+		typeReact = arrReact[Math.floor(Math.random() * arrReact.length)]
+	}
     request('https://graph.facebook.com/' + ID + '/reactions?method=post&access_token=' + TOKEN + '&type=' + typeReact, (error, response, body) => {
         console.log(body)
     })
