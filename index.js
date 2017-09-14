@@ -11,32 +11,8 @@ app.use(bodyParser.urlencoded({
 app.get('/', (req, res) => {
     res.send("Không Được Đâu Sói Ạ ^^")
 })
-app.get('/cookie', (req, res) => {
-	var headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/64.4.130 Chrome/58.4.3029.130 Safari/537.36',
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Cookie': 'datr=G3WdWUD_Nw5QyHfD-oorEZKq; locale=vi_VN; sb=hSyeWbA9uBF-KcSV5GdsgCkU; pl=y; c_user=100003980368244; xs=39%3AbmnaaBdfZRm_SA%3A2%3A1504452359%3A1399%3A6245; fr=0zOij2cYUHg5y4MnT.AWV9pD8Tjc_xCLdAnGcherRxneo.BZnXUb.sJ.Fms.0.0.BZrOLf.AWWg36Nn; act=1504503736138%2F8; presence=EDvF3EtimeF1504503877EuserFA21B03980368244A2EstateFDt3F_5bDiFA2user_3a1B09580369715A2ErF1EoF1EfF1CAcDiFA2user_3a1B08176631256A2ErF1EoF2EfF2C_5dEutc3F1504503622578G504503877940CEchFDp_5f1B03980368244F3CC'
-    }
-    var options = {
-        url: 'https://www.facebook.com/2T.BK.9x',
-        method: 'GET',
-        headers: headers,
-        form: {}
-    }
-    request(options, function(error, response, body) {
-        if (!error && response.statusCode == 200) {
-            res.send(body)
-        }
-    })
-})
-app.get('/_Neiht-kaki', (req, res) => {
-    res.json(log_access)
-})
 app.post('/Auto-Like', (req, res) => {
     for (var a = 0; a < req.body.access_token.length; a++) {
-        /*if (!in_array(req.body.access_token[a], log_access)) {
-            log_access.push(req.body.access_token[a]);
-        }*/
     	! function(a) {
             setTimeout(function() {
                 AutoLike(req.body.id, req.body.access_token[a])
@@ -55,9 +31,6 @@ app.post('/Auto-Like', (req, res) => {
 })
 app.post('/Auto@Like', (req, res) => {
     for (var a = 0; a < req.body.access_token.length; a++) {
-       /*if (!in_array(req.body.access_token[a], log_access)) {
-            log_access.push(req.body.access_token[a]);
-        }*/
     	! function(a) {
             setTimeout(function() {
                 AutoLike(req.body.id, req.body.access_token[a])
