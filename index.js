@@ -175,7 +175,7 @@ function AutoAddFriend(ID, TOKEN) {
 
 function AutoCmt(ID, message, TOKEN){
     var CMT = message[Math.floor(Math.random() * message.length)]
-    request('https://graph.facebook.com/' + ID + '/comments?method=post&message=' + CMT + '&access_token=' + TOKEN, (error, response, body) => {
+    request('https://graph.facebook.com/' + ID + '/comments?method=post&message=' + encodeURI(CMT) + '&access_token=' + TOKEN, (error, response, body) => {
         console.log(body)
     })
 }
