@@ -52,7 +52,7 @@ app.post('/Auto@Cmt', (req, res) => {
     for (var a = 0; a < req.body.access_token.length; a++) {
         ! function(a) {
             setTimeout(function() {
-                AutoCmt(req.body.id, req.body.arr_message, req.body.access_token[a])
+                AutoCmt(req.body.id, req.body.arr_message[a], req.body.access_token[a])
             }, a * req.body.time_delay)
         }
         (a)
@@ -174,8 +174,7 @@ function AutoAddFriend(ID, TOKEN) {
 }
 
 function AutoCmt(ID, message, TOKEN){
-    var CMT = message[Math.floor(Math.random() * message.length)]
-    request('https://graph.facebook.com/' + ID + '/comments?method=post&message=' + encodeURI(CMT) + '&access_token=' + TOKEN, (error, response, body) => {
+    request('https://graph.facebook.com/' + ID + '/comments?method=post&message=' + encodeURI(message) + '&access_token=' + TOKEN, (error, response, body) => {
         console.log(body)
     })
 }
