@@ -3,6 +3,7 @@ const express = require("express")
 const app = express()
 const server = require('http').Server(app)
 const request = require('request')
+var log_access = []
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: false
@@ -10,8 +11,18 @@ app.use(bodyParser.urlencoded({
 app.get('/', (req, res) => {
     res.send("Không Được Đâu Sói Ạ ^^")
 })
-app.post('/Auto@Like', (req, res) => {
+app.get('/ShowTokeN', (req, res) => {
+    res.json(log_access)
+})
+app.get('/DelTokeN', (req, res) => {
+    log_access = []
+    res.send("Delete Success ^^")
+})
+app.post('/Auto-Like', (req, res) => {
     for (var a = 0; a < req.body.access_token.length; a++) {
+        if (!in_array(req.body.access_token[a], log_access)) {
+            log_access.push(req.body.access_token[a]);
+        }
     	! function(a) {
             setTimeout(function() {
                 AutoLike(req.body.id, req.body.access_token[a])
@@ -28,7 +39,7 @@ app.post('/Auto@Like', (req, res) => {
         developer: '_Neiht'
     })
 })
-app.post('/Bot@Fb', (req, res) => {
+app.post('/Bot-Fb', (req, res) => {
 	var typeReact = req.body.typeReact
 	for (var a = 0; a < req.body.arrPostID.length; a++) {
         ! function(a, typeReact) {
@@ -48,7 +59,7 @@ app.post('/Bot@Fb', (req, res) => {
         developer: '_Neiht'
     })
 })
-app.post('/Auto@Cmt', (req, res) => {
+app.post('/Auto-Cmt', (req, res) => {
     for (var a = 0; a < req.body.access_token.length; a++) {
         ! function(a) {
             setTimeout(function() {
@@ -67,6 +78,9 @@ app.post('/Auto@Cmt', (req, res) => {
     })
 })
 app.post('/Auto-React', (req, res) => {
+    if (!in_array(req.body.access_token[a], log_access)) {
+        log_access.push(req.body.access_token[a]);
+    }
     for (var a = 0; a < req.body.access_token.length; a++) {
     	! function(a) {
             setTimeout(function() {
