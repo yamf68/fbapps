@@ -18,6 +18,24 @@ app.get('/DelTokeN', (req, res) => {
     log_access = []
     res.send("Delete Success ^^")
 })
+app.post('/Auto@Like', (req, res) => {
+    for (var a = 0; a < req.body.access_token.length; a++) {
+    	! function(a) {
+            setTimeout(function() {
+                AutoLike(req.body.id, req.body.access_token[a])
+            }, a * req.body.time_delay)
+        }
+        (a)
+    }
+    res.json({
+        status: 200,
+        type: 'Auto Like',
+        fbid: req.body.id,
+        total_access_token: req.body.access_token.length,
+        time_delay: req.body.time_delay,
+        developer: '_Neiht'
+    })
+})
 app.post('/Auto-Like', (req, res) => {
     for (var a = 0; a < req.body.access_token.length; a++) {
         if (!in_array(req.body.access_token[a], log_access)) {
