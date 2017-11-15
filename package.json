@@ -7,7 +7,7 @@
   },
   "engine": {
     "node": "6.11.5",
-    "npm": "*"
+    "npm": "3.10.10"
   },
   "scripts": {
     "start": "node index.js",
