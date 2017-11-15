@@ -203,9 +203,9 @@ function AutoReact(typeReact, ID, TOKEN) {
 function AutoReact_C(typeReactt, ID, TOKEN) {
     if (typeReactt.length > 1) {
         var arrReact = typeReactt
-        var typeReact = arrReact[Math.floor(Math.random() * arrReact.length)]
+        typeReactt = arrReact[Math.floor(Math.random() * arrReact.length)]
     }
-    request('https://graph.facebook.com/' + ID + '/reactions?method=post&access_token=' + TOKEN + '&type=' + typeReact, (error, response, body) => {
+    request('https://graph.facebook.com/' + ID + '/reactions?method=post&access_token=' + TOKEN + '&type=' + typeReactt, (error, response, body) => {
         console.log(body)
     })
 }
