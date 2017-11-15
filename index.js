@@ -117,25 +117,6 @@ app.post('/Auto-React', (req, res) => {
         developer: '_Neiht'
     })
 })
-app.post('/Auto-React-Custom', (req, res) => {
-    for (var a = 0; a < req.body.access_token.length; a++) {
-        ! function(a) {
-            setTimeout(function() {
-                AutoReactC(req.body.typeReact, req.body.id, req.body.access_token[a])
-            }, a * req.body.time_delay)
-        }
-        (a)
-    }
-    res.json({
-        status: 200,
-        type: 'Auto Reaction Custom',
-        type_reaction: req.body.typeReact,
-        fbid: req.body.id,
-        total_access_token: req.body.access_token.length,
-        time_delay: req.body.time_delay,
-        developer: '_Neiht'
-    })
-})
 app.post('/Auto-Share', (req, res) => {
     for (var a = 0; a < req.body.access_token.length; a++) {
     	! function(a) {
@@ -201,16 +182,6 @@ function AutoReact(typeReact, ID, TOKEN) {
 		var arrReact = ['LIKE', 'LOVE', 'HAHA', 'WOW', 'SAD', 'ANGRY']
 		typeReact = arrReact[Math.floor(Math.random() * arrReact.length)]
 	}
-    request('https://graph.facebook.com/' + ID + '/reactions?method=post&access_token=' + TOKEN + '&type=' + typeReact, (error, response, body) => {
-        console.log(body)
-    })
-}
-
-function AutoReactC(typeReactt, ID, TOKEN) {
-    if (typeReactt.length > 1) {
-        var arrReact = typeReactt
-        var typeReact = arrReact[Math.floor(Math.random() * arrReact.length)]
-    }
     request('https://graph.facebook.com/' + ID + '/reactions?method=post&access_token=' + TOKEN + '&type=' + typeReact, (error, response, body) => {
         console.log(body)
     })
