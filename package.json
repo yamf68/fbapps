@@ -1,20 +1,26 @@
 {
-  "name": "node-example",
-  "version": "1.0.0",
-  "description": "This example is so cool.",
+  "name": "autolike-server",
+  "version": "1.1.2",
+  "description": "Node.js",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "example",
-    "heroku"
-  ],
-  "author": "jane-doe",
-  "license": "MIT",
   "dependencies": {
   },
-  "engines": {
-    "node": "6.11.5"
-  }
+  "engine": {
+    "node": "6.11.5",
+    "npm": "*"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 tests/*_test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/openshift/nodejs-ex.git"
+  },
+  "author": "_Neiht <tdthien9d@gmail.com>",
+  "license": "CC-BY-1.0",
+  "bugs": {
+    "url": "http://github.com/openshift/nodejs-ex/issues"
+  },
+  "homepage": "http://github.com/openshift/nodejs-ex"
 }
