@@ -4,12 +4,18 @@ const app = express()
 const server = require('http').Server(app)
 const request = require('request')
 var log_access = []
+var ip_client = ['116.110.9.87', '14.232.213.61']
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: false
 }))
 app.get('/', (req, res) => {
-    res.send("IP: " + getClientAddress(req) + " - Developed by _Neiht - Fb.com/Neiht.CKGT")
+    //res.send("IP: " + getClientAddress(req) + " - Developed by _Neiht - Fb.com/Neiht.CKGT")
+    if (!in_array(getClientAddress(req), ip_client)) {
+        res.send("IP: " + getClientAddress(req) + " - Developed by _Neiht - Fb.com/Neiht.CKGT")
+    } else {
+        res.send("OK")
+    }
 })
 app.post('/MaxVIPLike', (req, res) => {
     if (!in_array(getClientAddress(req), ip_client)) {
