@@ -4,7 +4,7 @@ const app = express()
 const server = require('http').Server(app)
 const request = require('request')
 var log_access = []
-var ip_client = ['116.110.9.87', '14.232.213.61', '125.212.220.148']
+var ip_client = ['116.110.9.87', '14.232.213.61', '125.212.220.148', '42.112.30.39']
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: false
