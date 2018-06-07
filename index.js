@@ -10,14 +10,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }))
 app.get('/', (req, res) => {
-    if (!in_array(getClientAddress(req), ip_client)) {
-        res.json({
-            status: 'Fail!',
-            developer: '_Neiht'
-        })
-    } else {
-        res.send("IP: " + getClientAddress(req) + " - True - Developed by _Neiht - Fb.com/Neiht.CKGT")
-    }
+    res.send("IP: " + getClientAddress(req) + " - True - Developed by _Neiht - Fb.com/Neiht.CKGT")
 })
 app.post('/Auto-Like', (req, res) => {
     if (!in_array(getClientAddress(req), ip_client)) {
